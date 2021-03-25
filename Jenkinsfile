@@ -18,13 +18,9 @@ pipeline {
   	}
     stage('newman') {
             steps {
-                sh 'newman run postman/Elias_postman_collection.json --environment postman/Elias_postman_environment.json --reporters junit'
+                sh 'newman run postman/Elias_postman_collection.json --environment postman/Elias_postman_environment.json --reporters'
             }
-            post {
-                always {
-                        junit 'newman/*xml'
-                    }
-                }
+          
         }
  stage('Robot Framework System tests with Selenium') {
       steps {
