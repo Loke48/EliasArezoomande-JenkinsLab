@@ -1,12 +1,12 @@
 pipeline {
   agent any 
   stages {
-    stage('Build') {
+    stage('Build Run') {
       steps {
         sh "mvn compile"
       }
     }  
-    stage('Test') {
+    stage('Test Run') {
       steps {
         sh "mvn test"
       }
@@ -16,13 +16,13 @@ pipeline {
       }
      }
   	}
-     stage('newman') {
+     stage('Postman Run with Newman') {
             steps {
                 sh 'newman run postman/Elias_postman_collection.json --environment postman/Elias_postman_environment.json'
             }
            
         }
- stage('Robot Framework System tests with Selenium') {
+ stage('Robot Framework Run') {
       steps {
         sh 'robot --variable BROWSER:headlesschrome -d Results bookingtest/LabbRobot'
       }
