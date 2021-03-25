@@ -1,6 +1,6 @@
 Started by user Elias Arezoomande
-17:20:39 Connecting to https://api.github.com with no credentials, anonymous access
-Obtained Jenkinsfile from 61db596c5418c6b23a184fc1475018ef3ee89323
+17:52:27 Connecting to https://api.github.com with no credentials, anonymous access
+Obtained Jenkinsfile from 4bd2846dcec7fd2f29392e722d89a92f23d5237d
 Running in Durability level: MAX_SURVIVABILITY
 [Pipeline] Start of Pipeline
 [Pipeline] node
@@ -19,11 +19,11 @@ Fetching upstream changes from https://github.com/Loke48/EliasArezoomande-Jenkin
  > C:\Program Files\Git\bin\git.exe --version # timeout=10
  > git --version # 'git version 2.31.0.windows.1'
  > C:\Program Files\Git\bin\git.exe fetch --no-tags --force --progress -- https://github.com/Loke48/EliasArezoomande-JenkinsLab.git +refs/heads/main:refs/remotes/origin/main # timeout=10
-Checking out Revision 61db596c5418c6b23a184fc1475018ef3ee89323 (main)
+Checking out Revision 4bd2846dcec7fd2f29392e722d89a92f23d5237d (main)
  > C:\Program Files\Git\bin\git.exe config core.sparsecheckout # timeout=10
- > C:\Program Files\Git\bin\git.exe checkout -f 61db596c5418c6b23a184fc1475018ef3ee89323 # timeout=10
-Commit message: "first commit"
- > C:\Program Files\Git\bin\git.exe rev-list --no-walk 61db596c5418c6b23a184fc1475018ef3ee89323 # timeout=10
+ > C:\Program Files\Git\bin\git.exe checkout -f 4bd2846dcec7fd2f29392e722d89a92f23d5237d # timeout=10
+Commit message: "Jenkins file changed junit removed"
+ > C:\Program Files\Git\bin\git.exe rev-list --no-walk 4bd2846dcec7fd2f29392e722d89a92f23d5237d # timeout=10
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] withEnv
@@ -47,8 +47,8 @@ Commit message: "first commit"
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.435 s
-[INFO] Finished at: 2021-03-25T17:20:52+01:00
+[INFO] Total time:  6.287 s
+[INFO] Finished at: 2021-03-25T17:52:57+01:00
 [INFO] ------------------------------------------------------------------------
 [Pipeline] }
 [Pipeline] // stage
@@ -82,7 +82,7 @@ Commit message: "first commit"
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running FooTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.083 s - in FooTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 s - in FooTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -91,8 +91,8 @@ Commit message: "first commit"
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  7.343 s
-[INFO] Finished at: 2021-03-25T17:21:04+01:00
+[INFO] Total time:  7.642 s
+[INFO] Finished at: 2021-03-25T17:53:09+01:00
 [INFO] ------------------------------------------------------------------------
 Post stage
 [Pipeline] junit
@@ -103,29 +103,263 @@ Recording test results
 [Pipeline] stage
 [Pipeline] { (newman)
 [Pipeline] sh
-+ newman run postman/postman_collection.json --environment postman/postman_environment.json --reporters junit
-C:/WINDOWS/system32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/EliasArezoomandeJenkinsLabb_main@tmp/durable-47bfb17f/script.sh: line 1: newman: command not found
-Post stage
-[Pipeline] junit
-Recording test results
-No test report files were found. Configuration error?
-Error when executing always post condition:
-hudson.AbortException: No test report files were found. Configuration error?
-	at hudson.tasks.junit.JUnitParser$ParseResultCallable.invoke(JUnitParser.java:152)
-	at hudson.FilePath.act(FilePath.java:1164)
-	at hudson.FilePath.act(FilePath.java:1147)
-	at hudson.tasks.junit.JUnitParser.parseResult(JUnitParser.java:107)
-	at hudson.tasks.junit.JUnitResultArchiver.parse(JUnitResultArchiver.java:149)
-	at hudson.tasks.junit.JUnitResultArchiver.parseAndSummarize(JUnitResultArchiver.java:243)
-	at hudson.tasks.junit.pipeline.JUnitResultsStepExecution.run(JUnitResultsStepExecution.java:63)
-	at hudson.tasks.junit.pipeline.JUnitResultsStepExecution.run(JUnitResultsStepExecution.java:29)
-	at org.jenkinsci.plugins.workflow.steps.SynchronousNonBlockingStepExecution.lambda$start$0(SynchronousNonBlockingStepExecution.java:47)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:834)
++ newman run postman/Elias_postman_collection.json --environment postman/Elias_postman_environment.json --reporters
+newman
 
+Restful Booker
+
+â–¡ Auth
+â”” Get Auth Token
+  POST https://restful-booker.herokuapp.com/auth [200 OK, 271B, 588ms]
+  âˆš  Success Status code is 200
+  âˆš  To Check if Value is Null
+
+â–¡ Bookings
+â”” Get Bookings
+  GET https://restful-booker.herokuapp.com/booking/ [200 OK, 1.52KB, 125ms]
+  âˆš  Success Status code is 200
+
+â”” Create new Booking
+  POST https://restful-booker.herokuapp.com/booking [200 OK, 443B, 139ms]
+  âˆš  Status code is 200
+  1. Check firstname of new Booking
+  2. Check lastname of new Booking
+  âˆš  Check totalprice of new Booking
+  âˆš  Check depositpaid of new Booking
+  3. Check additionalneeds of new Booking
+  4. Check bookingdates checkin of new Booking
+  5. Check bookingdates checkout of new Booking
+
+â”” Get Booking by ID
+  GET https://restful-booker.herokuapp.com/booking/1 [200 OK, 386B, 112ms]
+  âˆš  Success Status code is 200
+  âˆš  Check first name not to be empty
+  âˆš  Check last name not to be empty
+  âˆš  Check total price not to be empty
+  âˆš  Check Depositeid not to be empty
+  âˆš  Checkin date not to be empty
+  âˆš  Checkout date not to be empty
+
+â”” Update Booking
+  PUT https://restful-booker.herokuapp.com/booking/1 [200 OK, 415B, 131ms]
+  âˆš  Success Status code is 200
+  6. Check first name James is included
+  7. Check that checkin includes 2020-03-06
+
+â”” Update Booking (partial)
+  PATCH https://restful-booker.herokuapp.com/booking/1 [200 OK, 424B, 126ms]
+  âˆš  Success Status code is 200
+  âˆš  Booking is updated, check that respone include firtsname Jim
+  8. Booking is updated, check that respone include firtsname Brown
+  âˆš  Booking is updated, check that respone include Breakfast and dinner
+
+â”” Delete Booking
+  DELETE https://restful-booker.herokuapp.com/booking/1?= [201 Created, 248B, 124ms]
+  9. Status code is 201
+  GET https://restful-booker.herokuapp.com/booking/104 [200 OK, 415B, 121ms]
+  â”Œ
+  â”‚ { id: '43eeee57-be8d-4b2d-ae03-ef702698c258',
+  â”‚   status: 'OK',
+  â”‚   code: 200,
+  â”‚   header:
+  â”‚    [ { key: 'Server', value: 'Cowboy' },
+  â”‚      { key: 'Connection', value: 'keep-alive' },
+  â”‚      { key: 'X-Powered-By', value: 'Express' },
+  â”‚      { key: 'Content-Type',
+  â”‚        value: 'application/json; charset=utf-8' },
+  â”‚      { key: 'Content-Length', value: '170' },
+  â”‚      { key: 'Etag',
+  â”‚        value: 'W/"aa-k85icF9EF/OXsTEcoS4vWsZS9Zw"' },
+  â”‚      { key: 'Date',
+  â”‚        value: 'Thu, 25 Mar 2021 16:53:16 GMT' },
+  â”‚      { key: 'Via', value: '1.1 vegur' } ],
+  â”‚   stream:
+  â”‚    { type: 'Buffer',
+  â”‚      data:
+  â”‚       [ 123,
+  â”‚         34,
+  â”‚         102,
+  â”‚         105,
+  â”‚         114,
+  â”‚         115,
+  â”‚         116,
+  â”‚         110,
+  â”‚         97,
+  â”‚         109,
+  â”‚         101,
+  â”‚         34,
+  â”‚         58,
+  â”‚         34,
+  â”‚         83,
+  â”‚         97,
+  â”‚         108,
+  â”‚         108,
+  â”‚         121,
+  â”‚         34,
+  â”‚         44,
+  â”‚         34,
+  â”‚         108,
+  â”‚         97,
+  â”‚         115,
+  â”‚         116,
+  â”‚         110,
+  â”‚         97,
+  â”‚         109,
+  â”‚         101,
+  â”‚         34,
+  â”‚         58,
+  â”‚         34,
+  â”‚         66,
+  â”‚         114,
+  â”‚         111,
+  â”‚         119,
+  â”‚         110,
+  â”‚         34,
+  â”‚         44,
+  â”‚         34,
+  â”‚         116,
+  â”‚         111,
+  â”‚         116,
+  â”‚         97,
+  â”‚         108,
+  â”‚         112,
+  â”‚         114,
+  â”‚         105,
+  â”‚         99,
+  â”‚         101,
+  â”‚         34,
+  â”‚         58,
+  â”‚         49,
+  â”‚         49,
+  â”‚         49,
+  â”‚         44,
+  â”‚         34,
+  â”‚         100,
+  â”‚         101,
+  â”‚         112,
+  â”‚         111,
+  â”‚         115,
+  â”‚         105,
+  â”‚         116,
+  â”‚         112,
+  â”‚         97,
+  â”‚         105,
+  â”‚         100,
+  â”‚         34,
+  â”‚         58,
+  â”‚         116,
+  â”‚         114,
+  â”‚         117,
+  â”‚         101,
+  â”‚         44,
+  â”‚         34,
+  â”‚         98,
+  â”‚         111,
+  â”‚         111,
+  â”‚         107,
+  â”‚         105,
+  â”‚         110,
+  â”‚         103,
+  â”‚         100,
+  â”‚         97,
+  â”‚         116,
+  â”‚         101,
+  â”‚         115,
+  â”‚         34,
+  â”‚         58,
+  â”‚         123,
+  â”‚         34,
+  â”‚         99,
+  â”‚         104,
+  â”‚         101,
+  â”‚         99,
+  â”‚         107,
+  â”‚         105,
+  â”‚         110,
+  â”‚         ... 70 more items ] },
+  â”‚   cookie: [],
+  â”‚   responseTime: 121,
+  â”‚   responseSize: 170 }
+  â””
+ 10. Response should be Not Found
+ 11. Response code 404
+
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”�
+â”‚                         â”‚            executed â”‚             failed â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚              iterations â”‚                   1 â”‚                  0 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚                requests â”‚                   8 â”‚                  0 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚            test-scripts â”‚                  14 â”‚                  0 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚      prerequest-scripts â”‚                   9 â”‚                  0 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚              assertions â”‚                  28 â”‚                 11 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ total run duration: 2s                                             â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ total data received: 2.15KB (approx)                               â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ average response time: 183ms [min: 112ms, max: 588ms, s.d.: 153ms] â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+
+   #  failure         detail                                                                                                                                                                                                              
+                                                                                                                                                                                                                                          
+ 01.  AssertionError  Check firstname of new Booking                                                                                                                                                                                      
+                      expected undefined to deeply equal '{{Sally}}'                                                                                                                                                                      
+                      at assertion:1 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Create new Booking"                                                                                                                                                                              
+                                                                                                                                                                                                                                          
+ 02.  AssertionError  Check lastname of new Booking                                                                                                                                                                                       
+                      expected 'Brown' to deeply equal '{{Brown}}'                                                                                                                                                                        
+                      at assertion:2 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Create new Booking"                                                                                                                                                                              
+                                                                                                                                                                                                                                          
+ 03.  AssertionError  Check additionalneeds of new Booking                                                                                                                                                                                
+                      expected 'Breakfast' to deeply equal '{{Breakfast}}'                                                                                                                                                                
+                      at assertion:5 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Create new Booking"                                                                                                                                                                              
+                                                                                                                                                                                                                                          
+ 04.  AssertionError  Check bookingdates checkin of new Booking                                                                                                                                                                           
+                      expected '2020-03-06' to deeply equal '{{Checkin}}'                                                                                                                                                                 
+                      at assertion:6 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Create new Booking"                                                                                                                                                                              
+                                                                                                                                                                                                                                          
+ 05.  AssertionError  Check bookingdates checkout of new Booking                                                                                                                                                                          
+                      expected '2020-03-09' to deeply equal '{{checkout}}'                                                                                                                                                                
+                      at assertion:7 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Create new Booking"                                                                                                                                                                              
+                                                                                                                                                                                                                                          
+ 06.  AssertionError  Check first name James is included                                                                                                                                                                                  
+                      expected 'James' to include '{{James}}'                                                                                                                                                                             
+                      at assertion:1 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Update Booking"                                                                                                                                                                                  
+                                                                                                                                                                                                                                          
+ 07.  AssertionError  Check that checkin includes 2020-03-06                                                                                                                                                                              
+                      expected '2020-03-06' to include '{{Checkin}}'                                                                                                                                                                      
+                      at assertion:2 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Update Booking"                                                                                                                                                                                  
+                                                                                                                                                                                                                                          
+ 08.  AssertionError  Booking is updated, check that respone include firtsname Brown                                                                                                                                                      
+                      expected '{"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2020-03-06","checkout":"2020-03-09"},"additionalneeds":"Breakfast and dinner"}' to include '{{Jim}}' 
+                      at assertion:2 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Update Booking (partial)"                                                                                                                                                                        
+                                                                                                                                                                                                                                          
+ 09.  AssertionError  Status code is 201                                                                                                                                                                                                  
+                      expected response to have status code 403 but got 201                                                                                                                                                               
+                      at assertion:0 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Delete Booking"                                                                                                                                                                                  
+                                                                                                                                                                                                                                          
+ 10.  AssertionError  Response should be Not Found                                                                                                                                                                                        
+                      expected 'OK' to include 'Not Found'                                                                                                                                                                                
+                      at assertion:1 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Delete Booking"                                                                                                                                                                                  
+                                                                                                                                                                                                                                          
+ 11.  AssertionError  Response code 404                                                                                                                                                                                                   
+                      expected 200 to equal 404                                                                                                                                                                                           
+                      at assertion:2 in test-script                                                                                                                                                                                       
+                      inside "Bookings / Delete Booking"                                                                                                                                                                                  
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
@@ -138,5 +372,5 @@ Stage "Robot Framework System tests with Selenium" skipped due to earlier failur
 [Pipeline] }
 [Pipeline] // node
 [Pipeline] End of Pipeline
-ERROR: script returned exit code 127
+ERROR: script returned exit code 1
 Finished: FAILURE
