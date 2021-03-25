@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Automation labb - postman" tests="8" time="2.060">
+  <testsuite name="Logga in / Get Auth Token" id="be80c5ce-9231-4d99-9422-c046f9a9967d" timestamp="2021-03-25T16:30:58.264Z" tests="1" failures="0" errors="0" time="0.652">
+    <testcase name="Status code is 200" time="0.652" classname="AutomationLabbPostman"/>
+  </testsuite>
+  <testsuite name="Bokningar / Get Bookings" id="076a0851-c829-479c-9a2e-e81775d66920" timestamp="2021-03-25T16:30:58.264Z" tests="2" failures="0" errors="0" time="0.134">
+    <testcase name="Status code is 200" time="0.134" classname="AutomationLabbPostman"/>
+    <testcase name="Number of bookings = 59" time="0.134" classname="AutomationLabbPostman"/>
+  </testsuite>
+  <testsuite name="Bokningar / Create new Booking" id="653929a4-b71a-4926-b85d-79a6a4dacdf8" timestamp="2021-03-25T16:30:58.264Z" tests="2" failures="0" errors="0" time="0.129">
+    <testcase name="Status code is 200" time="0.129" classname="AutomationLabbPostman"/>
+    <testcase name="Kolla att bokning data är korrekt" time="0.129" classname="AutomationLabbPostman"/>
+  </testsuite>
+  <testsuite name="Bokningar / How Many Bookings" id="4e059987-7ddd-47db-9609-54df8a6b95d6" timestamp="2021-03-25T16:30:58.264Z" tests="2" failures="0" errors="0" time="0.132">
+    <testcase name="Status code is 200" time="0.132" classname="AutomationLabbPostman"/>
+    <testcase name="Number of bookings = 60" time="0.132" classname="AutomationLabbPostman"/>
+  </testsuite>
+  <testsuite name="Bokningar / Get Booking by ID" id="b64efdc2-e072-4c04-9900-021e6ebdc8a8" timestamp="2021-03-25T16:30:58.264Z" tests="2" failures="0" errors="0" time="0.129">
+    <testcase name="Status code is 200" time="0.129" classname="AutomationLabbPostman"/>
+    <testcase name="Kolla att boknings data inte är tom" time="0.129" classname="AutomationLabbPostman"/>
+  </testsuite>
+  <testsuite name="Bokningar / Update Booking" id="596e26be-c140-4bcc-81f3-86daa0d02db3" timestamp="2021-03-25T16:30:58.264Z" tests="2" failures="0" errors="0" time="0.132">
+    <testcase name="Status code is 200" time="0.132" classname="AutomationLabbPostman"/>
+    <testcase name="Kolla att bokning data är korrekt" time="0.132" classname="AutomationLabbPostman"/>
+  </testsuite>
+  <testsuite name="Bokningar / Update Booking (partial)" id="965c8a8c-baa5-4f42-96d1-a1b41eab03d9" timestamp="2021-03-25T16:30:58.264Z" tests="2" failures="0" errors="0" time="0.136">
+    <testcase name="Status code is 200" time="0.136" classname="AutomationLabbPostman"/>
+    <testcase name="Bokning datan är uppdaterad" time="0.136" classname="AutomationLabbPostman"/>
+  </testsuite>
+  <testsuite name="Bokningar / Delete Booking" id="b579b411-258d-450a-a2c1-62dd60f76901" timestamp="2021-03-25T16:30:58.264Z" tests="3" failures="0" errors="0" time="0.616">
+    <testcase name="Status code is 201" time="0.616" classname="AutomationLabbPostman"/>
+    <testcase name="Response should be Not Found" time="0.616" classname="AutomationLabbPostman"/>
+    <testcase name="Response code 404" time="0.616" classname="AutomationLabbPostman"/>
+  </testsuite>
+</testsuites>
