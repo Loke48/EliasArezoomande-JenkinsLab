@@ -1,6 +1,6 @@
 Started by user Elias Arezoomande
-17:58:47 Connecting to https://api.github.com with no credentials, anonymous access
-Obtained Jenkinsfile from 83d6243a40c08010aaff87a1d6d5ecc2444db1a9
+18:33:57 Connecting to https://api.github.com with no credentials, anonymous access
+Obtained Jenkinsfile from 81dd23b4adb85e57d88e193de8132df7f2aad5a3
 Running in Durability level: MAX_SURVIVABILITY
 [Pipeline] Start of Pipeline
 [Pipeline] node
@@ -19,11 +19,11 @@ Fetching upstream changes from https://github.com/Loke48/EliasArezoomande-Jenkin
  > C:\Program Files\Git\bin\git.exe --version # timeout=10
  > git --version # 'git version 2.31.0.windows.1'
  > C:\Program Files\Git\bin\git.exe fetch --no-tags --force --progress -- https://github.com/Loke48/EliasArezoomande-JenkinsLab.git +refs/heads/main:refs/remotes/origin/main # timeout=10
-Checking out Revision 83d6243a40c08010aaff87a1d6d5ecc2444db1a9 (main)
+Checking out Revision 81dd23b4adb85e57d88e193de8132df7f2aad5a3 (main)
  > C:\Program Files\Git\bin\git.exe config core.sparsecheckout # timeout=10
- > C:\Program Files\Git\bin\git.exe checkout -f 83d6243a40c08010aaff87a1d6d5ecc2444db1a9 # timeout=10
-Commit message: "Jenkins file updated"
- > C:\Program Files\Git\bin\git.exe rev-list --no-walk 4bd2846dcec7fd2f29392e722d89a92f23d5237d # timeout=10
+ > C:\Program Files\Git\bin\git.exe checkout -f 81dd23b4adb85e57d88e193de8132df7f2aad5a3 # timeout=10
+Commit message: "Postman export version 2.1"
+ > C:\Program Files\Git\bin\git.exe rev-list --no-walk 57bf421af41e19f3de734d96956e7f0e1d4a9033 # timeout=10
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] withEnv
@@ -47,8 +47,8 @@ Commit message: "Jenkins file updated"
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  2.769 s
-[INFO] Finished at: 2021-03-25T17:58:59+01:00
+[INFO] Total time:  2.983 s
+[INFO] Finished at: 2021-03-25T18:34:08+01:00
 [INFO] ------------------------------------------------------------------------
 [Pipeline] }
 [Pipeline] // stage
@@ -82,7 +82,7 @@ Commit message: "Jenkins file updated"
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running FooTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s - in FooTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.1 s - in FooTest
 [INFO] 
 [INFO] Results:
 [INFO] 
@@ -91,8 +91,8 @@ Commit message: "Jenkins file updated"
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  5.903 s
-[INFO] Finished at: 2021-03-25T17:59:10+01:00
+[INFO] Total time:  7.151 s
+[INFO] Finished at: 2021-03-25T18:34:19+01:00
 [INFO] ------------------------------------------------------------------------
 Post stage
 [Pipeline] junit
@@ -103,16 +103,215 @@ Recording test results
 [Pipeline] stage
 [Pipeline] { (newman)
 [Pipeline] sh
-+ newman run postman/Elias_postman_collection.json --environment postman/Elias_postman_environment.json --reporters junit
-Post stage
-[Pipeline] junit
-Recording test results
-[Checks API] No suitable checks publisher found.
++ newman run postman/Elias_postman_collection.json --environment postman/Elias_postman_environment.json
+newman
+
+Restful Booker_working
+
+â–¡ Auth
+â”” Get Auth Token
+  POST https://restful-booker.herokuapp.com/auth [200 OK, 271B, 590ms]
+  âˆš  Success Status code is 200
+  âˆš  To Check if Value is Null
+
+â–¡ Bookings
+â”” Get Bookings
+  GET https://restful-booker.herokuapp.com/booking/ [200 OK, 697B, 128ms]
+  âˆš  Success Status code is 200
+
+â”” Create new Booking
+  POST https://restful-booker.herokuapp.com/booking [200 OK, 442B, 121ms]
+  âˆš  Status code is 200
+  âˆš  Check firstname of new Booking
+  âˆš  Check lastname of new Booking
+  âˆš  Check totalprice of new Booking
+  âˆš  Check depositpaid of new Booking
+  âˆš  Check additionalneeds of new Booking
+  âˆš  Check bookingdates checkin of new Booking
+  âˆš  Check bookingdates checkout of new Booking
+
+â”” Get Booking by ID
+  GET https://restful-booker.herokuapp.com/booking/28 [200 OK, 415B, 129ms]
+  âˆš  Success Status code is 200
+  âˆš  Check first name not to be empty
+  âˆš  Check last name not to be empty
+  âˆš  Check total price not to be empty
+  âˆš  Check Depositeid not to be empty
+  âˆš  Checkin date not to be empty
+  âˆš  Checkout date not to be empty
+
+â”” Update Booking
+  PUT https://restful-booker.herokuapp.com/booking/28 [200 OK, 415B, 119ms]
+  âˆš  Success Status code is 200
+  âˆš  Check first name James is included
+  âˆš  Check that checkin includes 2020-03-06
+
+â”” Update Booking (partial)
+  PATCH https://restful-booker.herokuapp.com/booking/28 [200 OK, 424B, 121ms]
+  âˆš  Success Status code is 200
+  âˆš  Booking is updated, check that respone include firtsname Jim
+  âˆš  Booking is updated, check that respone include firtsname Brown
+  âˆš  Booking is updated, check that respone include Breakfast and dinner
+
+â”” Delete Booking
+  DELETE https://restful-booker.herokuapp.com/booking/28?= [201 Created, 248B, 260ms]
+  âˆš  Status code is 201
+
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”�
+â”‚                         â”‚            executed â”‚             failed â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚              iterations â”‚                   1 â”‚                  0 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚                requests â”‚                   7 â”‚                  0 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚            test-scripts â”‚                  14 â”‚                  0 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚      prerequest-scripts â”‚                   9 â”‚                  0 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚              assertions â”‚                  26 â”‚                  0 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ total run duration: 2s                                             â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ total data received: 1.17KB (approx)                               â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ average response time: 209ms [min: 119ms, max: 590ms, s.d.: 162ms] â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
 [Pipeline] { (Robot Framework System tests with Selenium)
-Stage "Robot Framework System tests with Selenium" skipped due to earlier failure(s)
+[Pipeline] sh
++ robot --variable BROWSER:headlesschrome -d Results infotivTest/Labben
+==============================================================================
+Labben                                                                        
+==============================================================================
+Labben.Lab2 :: Testar Selenium och RobotFramework                             
+==============================================================================
+Komma in på hemsidan :: Test for accessing website infotiv            | PASS |
+------------------------------------------------------------------------------
+Logga in med korrekta uppgifter :: test login with valid credentials  | PASS |
+------------------------------------------------------------------------------
+Logga in med fel uppgifter :: test login with invalid credentials     | PASS |
+------------------------------------------------------------------------------
+Logga in med feluppgifter2 :: test login with invalid email and va... | PASS |
+------------------------------------------------------------------------------
+Logga in med feluppgifter3 :: test login with valid email and inva... | PASS |
+------------------------------------------------------------------------------
+Testa att logga ut :: Test the logout function                        | PASS |
+------------------------------------------------------------------------------
+Test av fel datum :: test invalid date in date section                | PASS |
+------------------------------------------------------------------------------
+Test av rätt datum :: test valid date in date section                 | PASS |
+------------------------------------------------------------------------------
+Labben.Lab2 :: Testar Selenium och RobotFramework                     | PASS |
+8 critical tests, 8 passed, 0 failed
+8 tests total, 8 passed, 0 failed
+==============================================================================
+Labben                                                                | PASS |
+8 critical tests, 8 passed, 0 failed
+8 tests total, 8 passed, 0 failed
+==============================================================================
+Output:  C:\WINDOWS\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\EliasArezoomandeJenkinsLabb_main\Results\output.xml
+Log:     C:\WINDOWS\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\EliasArezoomandeJenkinsLabb_main\Results\log.html
+Report:  C:\WINDOWS\system32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\EliasArezoomandeJenkinsLabb_main\Results\report.html
+Post stage
+[Pipeline] script
+[Pipeline] {
+[Pipeline] step
+[Pipeline] }
+[Pipeline] // script
+Error when executing always post condition:
+java.lang.UnsupportedOperationException: no known implementation of interface jenkins.tasks.SimpleBuildStep is named RobotPublisher
+	at org.jenkinsci.plugins.structs.describable.DescribableModel.resolveClass(DescribableModel.java:549)
+	at org.jenkinsci.plugins.structs.describable.DescribableModel.coerce(DescribableModel.java:473)
+	at org.jenkinsci.plugins.structs.describable.DescribableModel.buildArguments(DescribableModel.java:409)
+	at org.jenkinsci.plugins.structs.describable.DescribableModel.instantiate(DescribableModel.java:329)
+	at org.jenkinsci.plugins.workflow.cps.DSL.invokeStep(DSL.java:302)
+	at org.jenkinsci.plugins.workflow.cps.DSL.invokeMethod(DSL.java:193)
+	at org.jenkinsci.plugins.workflow.cps.CpsScript.invokeMethod(CpsScript.java:122)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:93)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:325)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1213)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1022)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:42)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:48)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:113)
+	at org.kohsuke.groovy.sandbox.impl.Checker$1.call(Checker.java:163)
+	at org.kohsuke.groovy.sandbox.GroovyInterceptor.onMethodCall(GroovyInterceptor.java:23)
+	at org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SandboxInterceptor.onMethodCall(SandboxInterceptor.java:157)
+	at org.kohsuke.groovy.sandbox.impl.Checker$1.call(Checker.java:161)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:165)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:135)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:135)
+	at com.cloudbees.groovy.cps.sandbox.SandboxInvoker.methodCall(SandboxInvoker.java:17)
+Caused: java.lang.IllegalArgumentException: Could not instantiate {delegate={$class=RobotPublisher, outputPath=Results, outputFileName=**/output.xml, reportFileName=**/report.html, logFileName=**/log.html, disableArchiveOutput=false, passThreshold=50, unstableThreshold=40, otherFiles=**/*.png,**/*.jpg}} for org.jenkinsci.plugins.workflow.steps.CoreStep
+	at org.jenkinsci.plugins.structs.describable.DescribableModel.instantiate(DescribableModel.java:334)
+	at org.jenkinsci.plugins.workflow.cps.DSL.invokeStep(DSL.java:302)
+	at org.jenkinsci.plugins.workflow.cps.DSL.invokeMethod(DSL.java:193)
+	at org.jenkinsci.plugins.workflow.cps.CpsScript.invokeMethod(CpsScript.java:122)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:93)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:325)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1213)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1022)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:42)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:48)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:113)
+	at org.kohsuke.groovy.sandbox.impl.Checker$1.call(Checker.java:163)
+	at org.kohsuke.groovy.sandbox.GroovyInterceptor.onMethodCall(GroovyInterceptor.java:23)
+	at org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SandboxInterceptor.onMethodCall(SandboxInterceptor.java:157)
+	at org.kohsuke.groovy.sandbox.impl.Checker$1.call(Checker.java:161)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:165)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:135)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:135)
+	at com.cloudbees.groovy.cps.sandbox.SandboxInvoker.methodCall(SandboxInvoker.java:17)
+	at WorkflowScript.run(WorkflowScript:32)
+	at ___cps.transform___(Native Method)
+	at com.cloudbees.groovy.cps.impl.ContinuationGroup.methodCall(ContinuationGroup.java:86)
+	at com.cloudbees.groovy.cps.impl.FunctionCallBlock$ContinuationImpl.dispatchOrArg(FunctionCallBlock.java:113)
+	at com.cloudbees.groovy.cps.impl.FunctionCallBlock$ContinuationImpl.fixArg(FunctionCallBlock.java:83)
+	at jdk.internal.reflect.GeneratedMethodAccessor99.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.java:72)
+	at com.cloudbees.groovy.cps.impl.CollectionLiteralBlock$ContinuationImpl.dispatch(CollectionLiteralBlock.java:55)
+	at com.cloudbees.groovy.cps.impl.CollectionLiteralBlock$ContinuationImpl.item(CollectionLiteralBlock.java:45)
+	at jdk.internal.reflect.GeneratedMethodAccessor108.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.java:72)
+	at com.cloudbees.groovy.cps.impl.ConstantBlock.eval(ConstantBlock.java:21)
+	at com.cloudbees.groovy.cps.Next.step(Next.java:83)
+	at com.cloudbees.groovy.cps.Continuable$1.call(Continuable.java:174)
+	at com.cloudbees.groovy.cps.Continuable$1.call(Continuable.java:163)
+	at org.codehaus.groovy.runtime.GroovyCategorySupport$ThreadCategoryInfo.use(GroovyCategorySupport.java:129)
+	at org.codehaus.groovy.runtime.GroovyCategorySupport.use(GroovyCategorySupport.java:268)
+	at com.cloudbees.groovy.cps.Continuable.run0(Continuable.java:163)
+	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable.access$001(SandboxContinuable.java:18)
+	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable.run0(SandboxContinuable.java:51)
+	at org.jenkinsci.plugins.workflow.cps.CpsThread.runNextChunk(CpsThread.java:185)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.run(CpsThreadGroup.java:400)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.access$400(CpsThreadGroup.java:96)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:312)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:276)
+	at org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService$2.call(CpsVmExecutorService.java:67)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at hudson.remoting.SingleLaneExecutorService$1.run(SingleLaneExecutorService.java:139)
+	at jenkins.util.ContextResettingExecutorService$1.run(ContextResettingExecutorService.java:28)
+	at jenkins.security.ImpersonatingExecutorService$1.run(ImpersonatingExecutorService.java:68)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] }
@@ -120,5 +319,94 @@ Stage "Robot Framework System tests with Selenium" skipped due to earlier failur
 [Pipeline] }
 [Pipeline] // node
 [Pipeline] End of Pipeline
-ERROR: script returned exit code 1
+java.lang.UnsupportedOperationException: no known implementation of interface jenkins.tasks.SimpleBuildStep is named RobotPublisher
+	at org.jenkinsci.plugins.structs.describable.DescribableModel.resolveClass(DescribableModel.java:549)
+	at org.jenkinsci.plugins.structs.describable.DescribableModel.coerce(DescribableModel.java:473)
+	at org.jenkinsci.plugins.structs.describable.DescribableModel.buildArguments(DescribableModel.java:409)
+	at org.jenkinsci.plugins.structs.describable.DescribableModel.instantiate(DescribableModel.java:329)
+	at org.jenkinsci.plugins.workflow.cps.DSL.invokeStep(DSL.java:302)
+	at org.jenkinsci.plugins.workflow.cps.DSL.invokeMethod(DSL.java:193)
+	at org.jenkinsci.plugins.workflow.cps.CpsScript.invokeMethod(CpsScript.java:122)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:93)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:325)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1213)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1022)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:42)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:48)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:113)
+	at org.kohsuke.groovy.sandbox.impl.Checker$1.call(Checker.java:163)
+	at org.kohsuke.groovy.sandbox.GroovyInterceptor.onMethodCall(GroovyInterceptor.java:23)
+	at org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SandboxInterceptor.onMethodCall(SandboxInterceptor.java:157)
+	at org.kohsuke.groovy.sandbox.impl.Checker$1.call(Checker.java:161)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:165)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:135)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:135)
+	at com.cloudbees.groovy.cps.sandbox.SandboxInvoker.methodCall(SandboxInvoker.java:17)
+Caused: java.lang.IllegalArgumentException: Could not instantiate {delegate={$class=RobotPublisher, outputPath=Results, outputFileName=**/output.xml, reportFileName=**/report.html, logFileName=**/log.html, disableArchiveOutput=false, passThreshold=50, unstableThreshold=40, otherFiles=**/*.png,**/*.jpg}} for org.jenkinsci.plugins.workflow.steps.CoreStep
+	at org.jenkinsci.plugins.structs.describable.DescribableModel.instantiate(DescribableModel.java:334)
+	at org.jenkinsci.plugins.workflow.cps.DSL.invokeStep(DSL.java:302)
+	at org.jenkinsci.plugins.workflow.cps.DSL.invokeMethod(DSL.java:193)
+	at org.jenkinsci.plugins.workflow.cps.CpsScript.invokeMethod(CpsScript.java:122)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:93)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:325)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1213)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1022)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:42)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:48)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:113)
+	at org.kohsuke.groovy.sandbox.impl.Checker$1.call(Checker.java:163)
+	at org.kohsuke.groovy.sandbox.GroovyInterceptor.onMethodCall(GroovyInterceptor.java:23)
+	at org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SandboxInterceptor.onMethodCall(SandboxInterceptor.java:157)
+	at org.kohsuke.groovy.sandbox.impl.Checker$1.call(Checker.java:161)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:165)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:135)
+	at org.kohsuke.groovy.sandbox.impl.Checker.checkedCall(Checker.java:135)
+	at com.cloudbees.groovy.cps.sandbox.SandboxInvoker.methodCall(SandboxInvoker.java:17)
+	at WorkflowScript.run(WorkflowScript:32)
+	at ___cps.transform___(Native Method)
+	at com.cloudbees.groovy.cps.impl.ContinuationGroup.methodCall(ContinuationGroup.java:86)
+	at com.cloudbees.groovy.cps.impl.FunctionCallBlock$ContinuationImpl.dispatchOrArg(FunctionCallBlock.java:113)
+	at com.cloudbees.groovy.cps.impl.FunctionCallBlock$ContinuationImpl.fixArg(FunctionCallBlock.java:83)
+	at jdk.internal.reflect.GeneratedMethodAccessor99.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.java:72)
+	at com.cloudbees.groovy.cps.impl.CollectionLiteralBlock$ContinuationImpl.dispatch(CollectionLiteralBlock.java:55)
+	at com.cloudbees.groovy.cps.impl.CollectionLiteralBlock$ContinuationImpl.item(CollectionLiteralBlock.java:45)
+	at jdk.internal.reflect.GeneratedMethodAccessor108.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.java:72)
+	at com.cloudbees.groovy.cps.impl.ConstantBlock.eval(ConstantBlock.java:21)
+	at com.cloudbees.groovy.cps.Next.step(Next.java:83)
+	at com.cloudbees.groovy.cps.Continuable$1.call(Continuable.java:174)
+	at com.cloudbees.groovy.cps.Continuable$1.call(Continuable.java:163)
+	at org.codehaus.groovy.runtime.GroovyCategorySupport$ThreadCategoryInfo.use(GroovyCategorySupport.java:129)
+	at org.codehaus.groovy.runtime.GroovyCategorySupport.use(GroovyCategorySupport.java:268)
+	at com.cloudbees.groovy.cps.Continuable.run0(Continuable.java:163)
+	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable.access$001(SandboxContinuable.java:18)
+	at org.jenkinsci.plugins.workflow.cps.SandboxContinuable.run0(SandboxContinuable.java:51)
+	at org.jenkinsci.plugins.workflow.cps.CpsThread.runNextChunk(CpsThread.java:185)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.run(CpsThreadGroup.java:400)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.access$400(CpsThreadGroup.java:96)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:312)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:276)
+	at org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService$2.call(CpsVmExecutorService.java:67)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at hudson.remoting.SingleLaneExecutorService$1.run(SingleLaneExecutorService.java:139)
+	at jenkins.util.ContextResettingExecutorService$1.run(ContextResettingExecutorService.java:28)
+	at jenkins.security.ImpersonatingExecutorService$1.run(ImpersonatingExecutorService.java:68)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
 Finished: FAILURE
